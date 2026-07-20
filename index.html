@@ -316,23 +316,23 @@
 
     <article class="project">
       <div class="top">
-        <div class="p-name"><h3>SISA — 결제 PG 마이그레이션</h3><span class="tag">백엔드 · 단독</span></div>
-        <span class="meta">2025.12 – 2026.04</span>
+        <div class="p-name"><h3>결제 PG 마이그레이션</h3><span class="tag">백엔드 · 단독</span></div>
+        <span class="meta">2025.11 – 2026.04</span>
       </div>
-      <p class="sub">레거시 PHP 교육 서비스(중국·일본)의 결제 PG 전면 교체 — 단독 완성·운영</p>
+      <p class="sub">레거시 PHP 교육·강의 서비스 다건의 결제 PG 전면 교체 — 이니시스 → 토스페이먼츠 (SISA · ntcore 등)</p>
       <div class="stack">
         <span>PHP</span><span>Smarty (.tpl)</span><span>ADODB / FreeTDS</span><span>MSSQL · SP</span><span>토스페이먼츠</span><span>알림톡</span>
       </div>
       <ul class="bullets">
-        <li><b>이니시스(INIpay) → 토스페이먼츠 결제모듈 전면 마이그레이션</b> — 중국·일본 × 웹·모바일 4개 채널 전환 + 라이브 키 적용</li>
-        <li><b>레거시 스택 대응</b> — PHP·Smarty 템플릿에서 ADODB/FreeTDS로 MSSQL 저장 프로시저 연동, 연속 SP 호출 버그 등 안정화</li>
-        <li><b>결제 정합성 확보</b> — wOrder INSERT→UPDATE 전환, 포인트 사용 시 merchantData 동적 갱신, OKIND 기반 영수증 URL 분기</li>
-        <li>카드사 코드 변환·정규화(zero-padding), 알림톡 발송, EJU 모의고사 결제 연동 등 후속 확장</li>
+        <li><b>이니시스(INIpay) → 토스페이먼츠 결제모듈 전면 마이그레이션</b> — 여러 레거시 PHP 교육 사이트 대상, 중국·일본 웹·모바일 채널 + 라이브 키 적용</li>
+        <li><b>단건결제 + 정기결제(빌링)·구독 라이프사이클</b>로 전환 — autoBilling 등 구독 결제 파이프라인 재구축</li>
+        <li><b>레거시 스택 대응</b> — ADODB/FreeTDS로 MSSQL 저장 프로시저 연동, 연속 SP 호출 버그 등 안정화</li>
+        <li><b>결제 정합성 확보</b> — wOrder INSERT→UPDATE, 포인트 merchantData 동적 갱신, OKIND 영수증 URL 분기, 카드사 코드 정규화</li>
       </ul>
       <div class="metrics">
         <span class="metric"><b>단독 완성·운영</b></span>
-        <span class="metric">중/일 <b>4채널</b> 전환</span>
-        <span class="metric">PG 전면 교체</span>
+        <span class="metric">다건 사이트 전환</span>
+        <span class="metric">단건 + 정기결제(빌링)</span>
       </div>
     </article>
 
