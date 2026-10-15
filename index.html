@@ -9,34 +9,44 @@
 <meta property="og:description" content="결제·구독·정산 커머스 백엔드 중심 풀스택 개발자 포트폴리오">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://wook2-e.github.io/">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b6b5e'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3E정%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%234f5bff'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='700' fill='white' text-anchor='middle'%3E정%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <script>
   try { var t = localStorage.getItem('theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
 </script>
 <style>
   :root {
-    --bg: #fafaf9;
+    --bg: #f4f5f8;
     --surface: #ffffff;
-    --ink: #1a1d1c;
-    --body: #3b413f;
-    --muted: #5f6763;
-    --line: #e6e8e6;
-    --line-soft: #f0f1ef;
-    --accent: #0b6b5e;
-    --accent-soft: #e5f1ee;
+    --ink: #12141a;
+    --body: #3a3f4b;
+    --muted: #646b7a;
+    --line: #e3e6ec;
+    --accent: #4f5bff;
+    --accent-ink: #3b45d9;
+    --accent-soft: #eceeff;
+    --hero-bg: #0e1016;
+    --hero-ink: #f3f4f8;
+    --hero-muted: #a3a9b8;
+    --hero-line: #262a36;
+    --hero-accent: #8f98ff;
+    --shadow: 0 1px 2px rgba(18,20,26,.04), 0 8px 24px rgba(18,20,26,.06);
     --sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
     --mono: "JetBrains Mono", "SF Mono", "Cascadia Mono", ui-monospace, Consolas, monospace;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #111312; --surface: #171a19; --ink: #eceeed; --body: #c4c9c6; --muted: #959d99;
-      --line: #282c2a; --line-soft: #1f2321; --accent: #5cc8b6; --accent-soft: #17302b;
+      --bg: #0b0c10; --surface: #14161d; --ink: #eef0f5; --body: #c3c7d1; --muted: #8e95a5;
+      --line: #242833; --accent: #8f98ff; --accent-ink: #a9b0ff; --accent-soft: #1d2040;
+      --hero-bg: #12141c; --hero-line: #2a2f3d;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3);
     }
   }
   :root[data-theme="dark"] {
-    --bg: #111312; --surface: #171a19; --ink: #eceeed; --body: #c4c9c6; --muted: #959d99;
-    --line: #282c2a; --line-soft: #1f2321; --accent: #5cc8b6; --accent-soft: #17302b;
+    --bg: #0b0c10; --surface: #14161d; --ink: #eef0f5; --body: #c3c7d1; --muted: #8e95a5;
+    --line: #242833; --accent: #8f98ff; --accent-ink: #a9b0ff; --accent-soft: #1d2040;
+    --hero-bg: #12141c; --hero-line: #2a2f3d;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3);
   }
 
   * { box-sizing: border-box; }
@@ -48,283 +58,307 @@
   }
   a { color: inherit; }
   b, strong { color: var(--ink); font-weight: 600; }
-  .page { max-width: 820px; margin: 0 auto; padding: 72px 24px 96px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-  /* ---------- Header ---------- */
-  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 56px; }
-  .eyebrow { font-size: 13px; font-weight: 600; color: var(--accent); letter-spacing: .02em; margin: 0; }
-  .theme-toggle {
-    background: none; border: 1px solid var(--line); color: var(--muted); border-radius: 8px;
-    padding: 5px 11px; font: 500 12px var(--sans); cursor: pointer;
+  /* ---------- Hero ---------- */
+  .hero { background: var(--hero-bg); color: var(--hero-muted); padding: 28px 0 64px; position: relative; overflow: hidden; }
+  .hero::after {
+    content: ""; position: absolute; width: 560px; height: 560px; right: -160px; top: -220px; border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(79,91,255,.38), transparent); pointer-events: none;
   }
-  .theme-toggle:hover { color: var(--ink); border-color: var(--muted); }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero b { color: var(--hero-ink); }
+  .topbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 72px; }
+  .logo { font-weight: 700; color: var(--hero-ink); font-size: 15px; letter-spacing: -0.02em; }
+  .logo span { color: var(--hero-accent); }
+  .theme-toggle {
+    background: transparent; border: 1px solid var(--hero-line); color: var(--hero-muted); border-radius: 999px;
+    padding: 6px 14px; font: 500 12px var(--sans); cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--hero-ink); border-color: var(--hero-muted); }
 
-  h1 { font-size: clamp(36px, 7vw, 52px); line-height: 1.1; margin: 0; font-weight: 700; letter-spacing: -0.035em; color: var(--ink); }
-  h1 small { font-size: 15px; font-weight: 500; letter-spacing: 0; color: var(--muted); margin-left: 12px; }
-  .lead { font-size: clamp(18px, 2.6vw, 21px); line-height: 1.55; color: var(--ink); font-weight: 500; margin: 20px 0 0; max-width: 34em; letter-spacing: -0.02em; }
-  .intro { margin: 16px 0 0; max-width: 40em; }
-  .contacts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 24px; font-size: 14px; }
-  .contacts a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 1px; }
-  .contacts a:hover { border-color: var(--accent); color: var(--accent); }
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; color: var(--hero-accent); margin: 0 0 18px; letter-spacing: .02em; }
+  h1 { font-size: clamp(44px, 9vw, 76px); line-height: 1.02; margin: 0; font-weight: 800; letter-spacing: -0.045em; color: var(--hero-ink); }
+  .lead { font-size: clamp(19px, 2.8vw, 25px); line-height: 1.5; color: var(--hero-ink); font-weight: 600; margin: 26px 0 0; max-width: 30em; letter-spacing: -0.025em; }
+  .lead em { font-style: normal; color: var(--hero-accent); }
+  .intro { margin: 16px 0 0; max-width: 40em; font-size: 15.5px; }
 
-  .stats { display: grid; grid-template-columns: repeat(4, 1fr); margin: 48px 0 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-  .stat { padding: 20px 0 18px; }
-  .stat + .stat { padding-left: 20px; border-left: 1px solid var(--line); }
-  .stat .n { font-size: 26px; font-weight: 700; color: var(--ink); letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
-  .stat .l { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .core { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+  .core span { font-size: 13px; font-weight: 600; color: var(--hero-ink); border: 1px solid var(--hero-line); background: rgba(255,255,255,.04); padding: 5px 12px; border-radius: 999px; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-size: 14px; font-weight: 600; padding: 11px 20px; border-radius: 10px; transition: .15s; }
+  .btn.primary { background: var(--accent); color: #fff; }
+  .btn.primary:hover { filter: brightness(1.1); }
+  .btn.ghost { color: var(--hero-ink); border: 1px solid var(--hero-line); }
+  .btn.ghost:hover { border-color: var(--hero-muted); }
+
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; border-top: 1px solid var(--hero-line); }
+  .stat { padding: 22px 0 0; }
+  .stat + .stat { padding-left: 24px; border-left: 1px solid var(--hero-line); }
+  .stat .n { font-size: clamp(30px, 4.6vw, 42px); font-weight: 800; color: var(--hero-ink); letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
+  .stat .n small { font-size: .6em; color: var(--hero-accent); margin-left: 1px; }
+  .stat .l { font-size: 13px; color: var(--hero-muted); margin-top: 10px; }
 
   /* ---------- Sections ---------- */
-  section { margin-top: 72px; }
-  h2 { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 24px; }
+  main.wrap { padding-top: 80px; padding-bottom: 40px; }
+  section + section { margin-top: 80px; }
+  .sec-title { display: flex; align-items: baseline; gap: 12px; margin: 0 0 26px; }
+  .sec-title h2 { font-size: 26px; font-weight: 800; color: var(--ink); margin: 0; letter-spacing: -0.03em; }
+  .sec-title span { font-size: 14px; color: var(--muted); }
 
   /* ---------- Featured projects ---------- */
-  .feature { display: grid; grid-template-columns: 168px 1fr; gap: 28px; padding: 32px 0; border-top: 1px solid var(--line); }
-  .feature:first-of-type { border-top: 0; padding-top: 0; }
-  .side { font-size: 13px; color: var(--muted); }
-  .side .date { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .side .role { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; color: var(--accent); background: var(--accent-soft); padding: 2px 8px; border-radius: 5px; }
-  .side .nums { margin-top: 14px; line-height: 1.75; }
-  .side .nums b { font-variant-numeric: tabular-nums; }
+  .feature {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow);
+    padding: 34px 36px; margin-bottom: 20px;
+  }
+  .f-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+  .idx { font-family: var(--mono); font-size: 13px; font-weight: 700; color: var(--accent); }
+  .role { font-size: 12px; font-weight: 700; color: var(--accent-ink); background: var(--accent-soft); padding: 3px 10px; border-radius: 999px; }
+  .date { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
+  h3 { font-size: clamp(24px, 3.4vw, 30px); font-weight: 800; color: var(--ink); margin: 14px 0 0; letter-spacing: -0.035em; line-height: 1.25; }
+  .summary { margin: 8px 0 0; font-size: 15.5px; }
 
-  h3 { font-size: 21px; font-weight: 700; color: var(--ink); margin: 0; letter-spacing: -0.025em; line-height: 1.35; }
-  .summary { margin: 6px 0 0; color: var(--muted); }
-  .stack { font-family: var(--mono); font-size: 12px; color: var(--muted); margin: 12px 0 0; line-height: 1.6; }
-  ul.points { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
-  ul.points li { position: relative; padding-left: 16px; }
-  ul.points li::before { content: ""; position: absolute; left: 0; top: .78em; width: 6px; height: 1.5px; background: var(--accent); }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0 0; }
+  .kpi { background: var(--bg); border-radius: 14px; padding: 16px 18px; }
+  .kpi .n { font-size: 26px; font-weight: 800; color: var(--accent); letter-spacing: -0.03em; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .kpi .l { font-size: 12.5px; color: var(--muted); margin-top: 6px; line-height: 1.45; }
+
+  ul.points { margin: 24px 0 0; padding: 0; list-style: none; display: grid; gap: 11px; }
+  ul.points li { position: relative; padding-left: 20px; }
+  ul.points li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .stack { display: flex; flex-wrap: wrap; gap: 6px; margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--line); }
+  .stack span { font-family: var(--mono); font-size: 11.5px; color: var(--muted); background: var(--bg); padding: 3px 9px; border-radius: 6px; }
 
   /* ---------- More projects ---------- */
-  .more { display: grid; gap: 0; }
-  .item { display: grid; grid-template-columns: 168px 1fr; gap: 28px; padding: 22px 0; border-top: 1px solid var(--line); }
-  .item:first-child { border-top: 0; padding-top: 0; }
-  .item h4 { font-size: 16.5px; font-weight: 650; color: var(--ink); margin: 0; letter-spacing: -0.02em; }
-  .item .summary { font-size: 14px; }
-  .item ul.points { margin-top: 10px; gap: 6px; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 24px 24px 22px;
+    display: flex; flex-direction: column;
+  }
+  .card h4 { font-size: 19px; font-weight: 750; color: var(--ink); margin: 12px 0 0; letter-spacing: -0.025em; line-height: 1.35; }
+  .card .summary { font-size: 14px; color: var(--muted); margin-top: 6px; }
+  .card ul.points { margin-top: 14px; gap: 7px; font-size: 14px; }
+  .card ul.points li::before { width: 6px; height: 6px; }
+  .card .stack { margin-top: auto; padding-top: 16px; border-top: 0; }
+  .card .stack-gap { height: 16px; }
+  .card .count { font-size: 12.5px; color: var(--muted); margin-left: auto; }
+  .card .count b { color: var(--accent-ink); }
 
   /* ---------- Skills ---------- */
-  .skills { display: grid; gap: 14px; margin: 0; }
-  .skills div { display: grid; grid-template-columns: 168px 1fr; gap: 28px; }
-  .skills dt { font-size: 13px; color: var(--muted); font-weight: 600; padding-top: 1px; }
-  .skills dd { margin: 0; font-size: 14.5px; }
+  .skills { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 10px 32px; margin: 0; }
+  .skills div { display: grid; grid-template-columns: 140px 1fr; gap: 20px; padding: 18px 0; }
+  .skills div + div { border-top: 1px solid var(--line); }
+  .skills dt { font-size: 14px; color: var(--ink); font-weight: 700; padding-top: 3px; }
+  .skills dd { margin: 0; display: flex; flex-wrap: wrap; gap: 7px; }
+  .skills dd span { font-size: 13.5px; padding: 4px 11px; border-radius: 8px; background: var(--bg); color: var(--body); }
+  .skills dd span.key { background: var(--accent-soft); color: var(--accent-ink); font-weight: 600; }
 
-  footer { margin-top: 72px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
+  footer { padding: 32px 0 56px; font-size: 12.5px; color: var(--muted); border-top: 1px solid var(--line); margin-top: 72px; }
 
-  @media (max-width: 640px) {
-    .page { padding: 40px 16px 72px; }
-    .topbar { margin-bottom: 36px; }
-    h1 small { display: block; margin: 8px 0 0; }
+  @media (max-width: 720px) {
+    .wrap { padding: 0 16px; }
+    .hero { padding-bottom: 48px; }
+    .topbar { margin-bottom: 48px; }
     .stats { grid-template-columns: repeat(2, 1fr); }
     .stat:nth-child(3) { padding-left: 0; border-left: 0; }
-    .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
-    .feature, .item, .skills div { grid-template-columns: 1fr; gap: 10px; }
-    .side .nums { margin-top: 6px; }
-    section { margin-top: 56px; }
+    .stat:nth-child(n+3) { margin-top: 22px; border-top: 1px solid var(--hero-line); }
+    main.wrap { padding-top: 56px; }
+    .feature { padding: 26px 20px; border-radius: 16px; }
+    .date { margin-left: 0; width: 100%; }
+    .kpis { grid-template-columns: 1fr 1fr; }
+    .grid { grid-template-columns: 1fr; }
+    .skills { padding: 6px 20px; }
+    .skills div { grid-template-columns: 1fr; gap: 10px; }
   }
   @media print {
-    body { background: #fff; } .theme-toggle { display: none; }
-    .feature, .item { break-inside: avoid; }
+    .hero { background: #fff; color: #333; } .hero::after, .theme-toggle, .actions { display: none; }
+    .feature, .card { box-shadow: none; break-inside: avoid; }
   }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <header>
+<header class="hero">
+  <div class="wrap">
     <div class="topbar">
-      <p class="eyebrow">Backend · Full-Stack Developer</p>
-      <button class="theme-toggle" type="button" aria-label="다크/라이트 테마 전환" onclick="toggleTheme()">테마</button>
+      <div class="logo">wook2-e<span>.</span></div>
+      <button class="theme-toggle" type="button" aria-label="다크/라이트 테마 전환" onclick="toggleTheme()">테마 전환</button>
     </div>
-    <h1>정연욱<small>Jeong Yeonwook</small></h1>
-    <p class="lead">결제·구독·정산이 얽힌 커머스 서비스를 기획부터 배포·운영까지 끝맺는 백엔드 중심 풀스택 개발자입니다.</p>
+
+    <p class="eyebrow">Backend · Full-Stack Developer</p>
+    <h1>정연욱</h1>
+    <p class="lead">결제·구독·정산이 얽힌 커머스 서비스를<br><em>기획부터 배포·운영까지</em> 끝맺는 개발자입니다.</p>
     <p class="intro">
       Spring Boot와 NestJS로 커머스·구독형 SaaS 백엔드를 만들고, 필요하면 React·Next.js 프론트와 위젯까지 직접 붙입니다.
       <b>토스페이먼츠·KG이니시스</b> 결제 연동, 주문 클레임과 정산 원장, <b>멀티테넌트</b> 설계를 여러 서비스에서 반복해 다뤄 왔습니다.
     </p>
-    <div class="contacts">
-      <a href="mailto:kukl2362012@naver.com">kukl2362012@naver.com</a>
-      <a href="https://github.com/wook2-e">github.com/wook2-e</a>
+
+    <div class="core">
+      <span>Spring Boot</span><span>NestJS</span><span>React</span><span>Next.js</span><span>MariaDB</span><span>토스페이먼츠</span><span>KG이니시스</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" href="mailto:kukl2362012@naver.com">메일 보내기</a>
+      <a class="btn ghost" href="https://github.com/wook2-e">GitHub</a>
     </div>
 
     <div class="stats">
-      <div class="stat"><div class="n">1,900+</div><div class="l">커밋 (2025.11~)</div></div>
+      <div class="stat"><div class="n">1,900<small>+</small></div><div class="l">커밋 (2025.11~)</div></div>
       <div class="stat"><div class="n">8</div><div class="l">프로젝트</div></div>
       <div class="stat"><div class="n">2</div><div class="l">백엔드 스택 (Spring · Nest)</div></div>
       <div class="stat"><div class="n">2</div><div class="l">PG 연동 (토스 · 이니시스)</div></div>
     </div>
-  </header>
+  </div>
+</header>
+
+<main class="wrap">
 
   <section>
-    <h2>주요 프로젝트</h2>
+    <div class="sec-title"><h2>주요 프로젝트</h2><span>3</span></div>
 
     <article class="feature">
-      <div class="side">
-        <div class="date">2026.08 – 진행 중</div>
-        <span class="role">풀스택 · 팀</span>
-        <div class="nums">커밋 <b>318</b> · 저장소 4개<br>백오피스 API <b>91</b><br>백오피스 프론트 <b>126</b></div>
+      <div class="f-head"><span class="idx">01</span><span class="role">풀스택 · 팀</span><span class="date">2026.08 – 진행 중</span></div>
+      <h3>바른생각 독립몰</h3>
+      <p class="summary">자체 개발 쇼핑몰과 운영 백오피스. 고객 API, 백오피스 API, 고객·백오피스 프론트까지 네 저장소를 오가며 개발.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="n">318</div><div class="l">본인 커밋 (4개 저장소)</div></div>
+        <div class="kpi"><div class="n">0 → 1</div><div class="l">백오피스 API 골격부터 구축</div></div>
+        <div class="kpi"><div class="n">6축</div><div class="l">구매 제한 판정 적용</div></div>
       </div>
-      <div>
-        <h3>바른생각 독립몰</h3>
-        <p class="summary">자체 개발 쇼핑몰과 운영 백오피스. 고객 API, 백오피스 API, 고객·백오피스 프론트까지 네 저장소를 오가며 개발.</p>
-        <p class="stack">Spring Boot 3.5 · Java 21 · JPA · MariaDB · Next.js 16 · React 19 · Tailwind 4 · 사방넷 OMS</p>
-        <ul class="points">
-          <li><b>백오피스 API를 골격부터 구축</b>했습니다. 운영자 인증, 상품·카테고리·프로모션·배송 정책 관리 API 전반.</li>
-          <li><b>주문 클레임 파이프라인</b> — 취소·교환·반품을 요청 → 승인 → 환불 실행으로 연결. 교환 승인 시 재고 이중 차감, 전액 환불 후 결제상태가 남던 버그 해결.</li>
-          <li><b>정산 원장</b> — 결제 승인 시점에 원장을 쌓고, 주문 할인을 항목별로 분해해 쿠폰·적립금·무료배송 몫을 정산 라인에 분리.</li>
-          <li><b>사방넷 OMS 어댑터</b> — 인증·주문/클레임 조회·운송장 전송. 결제 → 출고 → 배송완료 → 자동 구매확정으로 끊겨 있던 흐름 복구.</li>
-          <li><b>구매 제한 판정</b> — 백오피스가 저장만 하던 6축(수량·등급별·구매이력·ID당 횟수·가입기간·단독구매)을 주문과 장바구니에 같은 로직으로 적용.</li>
-          <li>프로모션 섹션 빌더, 통계·정산 대시보드를 목 데이터에서 실집계로 전환.</li>
-        </ul>
-      </div>
+      <ul class="points">
+        <li><b>백오피스 API를 골격부터 구축</b> — 운영자 인증, 상품·카테고리·프로모션·배송 정책 관리 API 전반.</li>
+        <li><b>주문 클레임 파이프라인</b> — 취소·교환·반품을 요청 → 승인 → 환불 실행으로 연결. 교환 승인 시 재고 이중 차감, 전액 환불 후 결제상태가 남던 버그 해결.</li>
+        <li><b>정산 원장</b> — 결제 승인 시점에 원장을 쌓고, 주문 할인을 항목별로 분해해 쿠폰·적립금·무료배송 몫을 정산 라인에 분리.</li>
+        <li><b>사방넷 OMS 어댑터</b> — 인증·주문/클레임 조회·운송장 전송. 결제 → 출고 → 배송완료 → 자동 구매확정으로 끊겨 있던 흐름 복구.</li>
+        <li><b>구매 제한 판정</b> — 백오피스가 저장만 하던 6축(수량·등급별·구매이력·ID당 횟수·가입기간·단독구매)을 주문과 장바구니에 같은 로직으로 적용.</li>
+        <li>프로모션 섹션 빌더, 통계·정산 대시보드를 목 데이터에서 실집계로 전환.</li>
+      </ul>
+      <div class="stack"><span>Spring Boot 3.5</span><span>Java 21</span><span>JPA</span><span>MariaDB</span><span>Next.js 16</span><span>React 19</span><span>Tailwind 4</span><span>사방넷 OMS</span></div>
     </article>
 
     <article class="feature">
-      <div class="side">
-        <div class="date">2026.01 – 2026.08</div>
-        <span class="role">풀스택 · 단독</span>
-        <div class="nums">백엔드 <b>259</b> · 프론트 <b>443</b> 커밋<br>코드 <b>+49.7k / −15.6k</b><br>DB 모델 <b>35</b></div>
+      <div class="f-head"><span class="idx">02</span><span class="role">풀스택 · 단독</span><span class="date">2026.01 – 2026.08</span></div>
+      <h3>LearnRun</h3>
+      <p class="summary">구독형 온라인 강의(LMS) SaaS 플랫폼. 백엔드와 프론트 전 영역을 혼자 개발.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="n">702</div><div class="l">커밋 (백엔드 259 · 프론트 443)</div></div>
+        <div class="kpi"><div class="n">+49.7k</div><div class="l">코드 추가 (−15.6k)</div></div>
+        <div class="kpi"><div class="n">35</div><div class="l">Prisma 모델 · 멀티테넌트</div></div>
       </div>
-      <div>
-        <h3>LearnRun</h3>
-        <p class="summary">구독형 온라인 강의(LMS) SaaS 플랫폼. 백엔드와 프론트 전 영역을 혼자 개발.</p>
-        <p class="stack">NestJS 11 · Prisma · MariaDB · JWT/Passport · React 19 · Tailwind · Vimeo Player · AWS S3·CDN</p>
-        <ul class="points">
-          <li><b>siteId 기반 멀티테넌트 아키텍처</b> — Prisma 모델 35개, 사이트별 데이터 완전 격리.</li>
-          <li><b>외부 커머스 플랫폼 연동</b> — OAuth 인증, 회원 동기화, 관리자 계정 자동 생성, 토큰 갱신 race condition 해결.</li>
-          <li><b>구독 결제 파이프라인</b> — 토스페이먼츠 빌링·단건결제, 환불 웹훅, 플랜별 쿼타·후불 종량제, 정산(VAT·수수료) 자동 계산.</li>
-          <li><b>LMS 핵심 기능</b> — 진도 추적, 과제 자동·수동 채점(객관식·주관식·서술형), 수료증 PDF 생성.</li>
-          <li>Vimeo OTT 영상 파이프라인, 만료 사이트 자동 처리 크론, S3 → CDN 전환 등 운영 자동화.</li>
-        </ul>
-      </div>
+      <ul class="points">
+        <li><b>siteId 기반 멀티테넌트 아키텍처</b> — Prisma 모델 35개, 사이트별 데이터 완전 격리.</li>
+        <li><b>외부 커머스 플랫폼 연동</b> — OAuth 인증, 회원 동기화, 관리자 계정 자동 생성, 토큰 갱신 race condition 해결.</li>
+        <li><b>구독 결제 파이프라인</b> — 토스페이먼츠 빌링·단건결제, 환불 웹훅, 플랜별 쿼타·후불 종량제, 정산(VAT·수수료) 자동 계산.</li>
+        <li><b>LMS 핵심 기능</b> — 진도 추적, 과제 자동·수동 채점(객관식·주관식·서술형), 수료증 PDF 생성.</li>
+        <li>Vimeo OTT 영상 파이프라인, 만료 사이트 자동 처리 크론, S3 → CDN 전환 등 운영 자동화.</li>
+      </ul>
+      <div class="stack"><span>NestJS 11</span><span>Prisma</span><span>MariaDB</span><span>JWT/Passport</span><span>React 19</span><span>Tailwind</span><span>Vimeo Player</span><span>AWS S3·CDN</span></div>
     </article>
 
     <article class="feature">
-      <div class="side">
-        <div class="date">2026.04 – 2026.08</div>
-        <span class="role">풀스택 · 팀</span>
-        <div class="nums">위젯 <b>331</b> · 백엔드 <b>235</b><br>프론트 <b>160</b> 커밋<br>코드 <b>+63.9k</b></div>
+      <div class="f-head"><span class="idx">03</span><span class="role">풀스택 · 팀</span><span class="date">2026.04 – 2026.08</span></div>
+      <h3>Weclo</h3>
+      <p class="summary">커스텀 인쇄·굿즈 커머스. 브라우저 안에서 도는 3D 스튜디오와 디자인 에디터 위젯.</p>
+      <div class="kpis">
+        <div class="kpi"><div class="n">726</div><div class="l">커밋 (위젯 331 · 백엔드 235 · 프론트 160)</div></div>
+        <div class="kpi"><div class="n">+63.9k</div><div class="l">코드 추가</div></div>
+        <div class="kpi"><div class="n">3D + 2D</div><div class="l">프리뷰 · 캔버스 에디터</div></div>
       </div>
-      <div>
-        <h3>Weclo</h3>
-        <p class="summary">커스텀 인쇄·굿즈 커머스. 브라우저 안에서 도는 3D 스튜디오와 디자인 에디터 위젯.</p>
-        <p class="stack">React 19 · Zustand · model-viewer · fabric.js · pdf.js · Playwright · NestJS</p>
-        <ul class="points">
-          <li><b>3D 제품 프리뷰 + 2D 캔버스 디자인 에디터</b> 위젯 개발 (model-viewer + fabric.js, 상태관리 Zustand).</li>
-          <li><b>커머스 카트·결제 연동</b> — DOM 조작 방식을 서버 카트 API로 전환, 디자인 ID별로 카트 줄 분리.</li>
-          <li><b>인쇄면별 상대가격 계산·옵션 조합 동기화</b> — 이중청구 회피 등 가격 정합성 처리.</li>
-          <li>Playwright E2E 테스트로 결제·카트 시나리오 검증.</li>
-        </ul>
-      </div>
+      <ul class="points">
+        <li><b>3D 제품 프리뷰 + 2D 캔버스 디자인 에디터</b> 위젯 개발 (model-viewer + fabric.js, 상태관리 Zustand).</li>
+        <li><b>커머스 카트·결제 연동</b> — DOM 조작 방식을 서버 카트 API로 전환, 디자인 ID별로 카트 줄 분리.</li>
+        <li><b>인쇄면별 상대가격 계산·옵션 조합 동기화</b> — 이중청구 회피 등 가격 정합성 처리.</li>
+        <li>Playwright E2E 테스트로 결제·카트 시나리오 검증.</li>
+      </ul>
+      <div class="stack"><span>React 19</span><span>Zustand</span><span>model-viewer</span><span>fabric.js</span><span>pdf.js</span><span>Playwright</span><span>NestJS</span></div>
     </article>
   </section>
 
   <section>
-    <h2>그 밖의 프로젝트</h2>
-    <div class="more">
+    <div class="sec-title"><h2>그 밖의 프로젝트</h2><span>5</span></div>
+    <div class="grid">
 
-      <article class="item">
-        <div class="side">
-          <div class="date">2026.10 – 진행 중</div>
-          <span class="role">풀스택 · 팀</span>
-          <div class="nums">커밋 <b>68</b></div>
-        </div>
-        <div>
-          <h4>언베일 독립몰</h4>
-          <p class="summary">바른생각 코드베이스를 분기한 독립몰. 결제·본인인증 연동과 출시 전 QA.</p>
-          <ul class="points">
-            <li><b>KG이니시스 결제 연동</b> — 결제창 서명을 서버가 발급하고, 승인 서명을 규격(쿼리스트링 해시)대로 수정.</li>
-            <li>리프레시 토큰 회전·쿠키 전용 콜백 때문에 <b>회원 결제가 비회원으로 승인되던 문제</b> 추적·수정.</li>
-            <li>원본 저장소 변경분을 주기적으로 반영하면서 언베일 전용 시안·설정 보존. KMC 본인인증 콜백 연결.</li>
-          </ul>
-          <p class="stack">Spring Boot 3.5 · Next.js 16 · KG이니시스 · KMC · 채널톡</p>
-        </div>
+      <article class="card">
+        <div class="f-head"><span class="role">풀스택 · 팀</span><span class="count">커밋 <b>68</b></span></div>
+        <h4>언베일 독립몰</h4>
+        <p class="summary">2026.10 – 진행 중 · 바른생각 코드베이스를 분기한 독립몰</p>
+        <ul class="points">
+          <li><b>KG이니시스 결제 연동</b> — 결제창 서명 서버 발급, 승인 서명을 규격(쿼리스트링 해시)대로 수정.</li>
+          <li>토큰 회전·쿠키 전용 콜백으로 <b>회원 결제가 비회원으로 승인되던 문제</b> 추적·수정.</li>
+          <li>원본 저장소 변경분을 주기적으로 반영하면서 전용 시안·설정 보존, KMC 본인인증 연결.</li>
+        </ul>
+        <div class="stack-gap"></div>
+        <div class="stack"><span>Spring Boot</span><span>Next.js 16</span><span>KG이니시스</span><span>KMC</span></div>
       </article>
 
-      <article class="item">
-        <div class="side">
-          <div class="date">2026.08 – 2026.09</div>
-          <span class="role">백엔드 · 팀</span>
-          <div class="nums">커밋 <b>11</b> · 코드 <b>+7.2k</b></div>
-        </div>
-        <div>
-          <h4>아즈라 정품등록</h4>
-          <p class="summary">아임웹 기반 브랜드몰의 정품등록·AS 시스템 백엔드.</p>
-          <ul class="points">
-            <li>시리얼 검증 포함 <b>API 10개</b>. 아임웹 코드위젯에 스크립트 한 줄만 넣으면 목이 실서버로 바뀌도록 설계.</li>
-            <li>관리자 심사(승인·반려), 시리얼 명단 관리, 아임웹 OMS 인증 연동, 마이그레이션 러너.</li>
-          </ul>
-          <p class="stack">Next.js 15 · TypeScript · PostgreSQL · Supabase · 아임웹 OMS</p>
-        </div>
+      <article class="card">
+        <div class="f-head"><span class="role">백엔드 · 팀</span><span class="count">커밋 <b>11</b> · <b>+7.2k</b></span></div>
+        <h4>아즈라 정품등록</h4>
+        <p class="summary">2026.08 – 2026.09 · 아임웹 기반 브랜드몰의 정품등록·AS 백엔드</p>
+        <ul class="points">
+          <li>시리얼 검증 포함 <b>API 10개</b>. 코드위젯에 스크립트 한 줄만 넣으면 목이 실서버로 바뀌도록 설계.</li>
+          <li>관리자 심사(승인·반려), 시리얼 명단 관리, 아임웹 OMS 인증 연동, 마이그레이션 러너.</li>
+        </ul>
+        <div class="stack-gap"></div>
+        <div class="stack"><span>Next.js 15</span><span>TypeScript</span><span>PostgreSQL</span><span>Supabase</span></div>
       </article>
 
-      <article class="item">
-        <div class="side">
-          <div class="date">2026.01 – 2026.04</div>
-          <span class="role">백엔드 · 팀</span>
-          <div class="nums">커밋 <b>11</b></div>
-        </div>
-        <div>
-          <h4>SISA 결제 PG 전환 안정화</h4>
-          <p class="summary">레거시 PHP 교육 서비스의 이니시스 → 토스페이먼츠 전환 이후 결제·주문 연동 안정화.</p>
-          <ul class="points">
-            <li><b>카드사 코드 정규화</b> — 토스 코드를 기존 이니시스 코드로 변환, 인터넷전문은행 매핑 추가, zero-padding 적용.</li>
-            <li>결제 단계 주문 조회를 OLD_OID 기준으로 바꿔 <b>알림톡 발송·인강 권한·수강내역 누락</b> 해결. 토스페이 결제수단 처리, EJU 모의고사 토스 연동.</li>
-          </ul>
-          <p class="stack">PHP · MSSQL · 토스페이먼츠 · 알림톡</p>
-        </div>
+      <article class="card">
+        <div class="f-head"><span class="role">백엔드 · 팀</span><span class="count">커밋 <b>11</b></span></div>
+        <h4>SISA 결제 PG 전환 안정화</h4>
+        <p class="summary">2026.01 – 2026.04 · 레거시 PHP 교육 서비스의 이니시스 → 토스 전환 후 안정화</p>
+        <ul class="points">
+          <li><b>카드사 코드 정규화</b> — 토스 코드를 이니시스 코드로 변환, 인터넷전문은행 매핑, zero-padding.</li>
+          <li>주문 조회를 OLD_OID 기준으로 바꿔 <b>알림톡·인강 권한·수강내역 누락</b> 해결. EJU 모의고사 토스 연동.</li>
+        </ul>
+        <div class="stack-gap"></div>
+        <div class="stack"><span>PHP</span><span>MSSQL</span><span>토스페이먼츠</span><span>알림톡</span></div>
       </article>
 
-      <article class="item">
-        <div class="side">
-          <div class="date">2025.11 – 2026.01</div>
-          <span class="role">백엔드 · 팀</span>
-          <div class="nums">커밋 <b>60</b></div>
-        </div>
-        <div>
-          <h4>DoorKitchen</h4>
-          <p class="summary">구독형 밀키트·식품 정기배송 운영 백오피스.</p>
-          <ul class="points">
-            <li><b>구독 만료 자동 처리</b> — 회원별 배송횟수 기반 만료 판정, Cron 정기 배송 처리 후 자동 만료 체크.</li>
-            <li>외부 주문 동기화와 엑셀 업로드, 재업로드 시 중복 합산 방지. 비정상 데이터 예외 처리 등 운영 안정화.</li>
-          </ul>
-          <p class="stack">Next.js 15 · TypeScript · Vercel Cron</p>
-        </div>
+      <article class="card">
+        <div class="f-head"><span class="role">백엔드 · 팀</span><span class="count">커밋 <b>60</b></span></div>
+        <h4>DoorKitchen</h4>
+        <p class="summary">2025.11 – 2026.01 · 구독형 밀키트 정기배송 운영 백오피스</p>
+        <ul class="points">
+          <li><b>구독 만료 자동 처리</b> — 회원별 배송횟수 기반 만료 판정, Cron 정기 배송 처리 후 자동 만료 체크.</li>
+          <li>외부 주문 동기화와 엑셀 업로드, 재업로드 시 중복 합산 방지 등 운영 안정화.</li>
+        </ul>
+        <div class="stack-gap"></div>
+        <div class="stack"><span>Next.js 15</span><span>TypeScript</span><span>Vercel Cron</span></div>
       </article>
 
-      <article class="item">
-        <div class="side">
-          <div class="date">2026.03 – 2026.04</div>
-          <span class="role">개인 · 단독</span>
-          <div class="nums">커밋 <b>34</b></div>
-        </div>
-        <div>
-          <h4>TRB — 암호화폐 자동매매 봇</h4>
-          <p class="summary">바이낸스 실전매매 봇과 백테스팅 엔진. 전략 설계부터 리스크 관리·모니터링까지 단독 개발.</p>
-          <ul class="points">
-            <li>라이브 로직과 백테스트 로직을 동일하게 맞춘 <b>실전매매 + 백테스팅 이원 구조</b>.</li>
-            <li>KAMA·ADX·RSI 기반 <b>시장 레짐 판정</b>으로 전략 분기, 손절·익절·트레일링스톱 등 리스크 관리, 디스코드 실시간 알림.</li>
-          </ul>
-          <p class="stack">Python · Binance API · Discord Webhook</p>
-        </div>
+      <article class="card">
+        <div class="f-head"><span class="role">개인 · 단독</span><span class="count">커밋 <b>34</b></span></div>
+        <h4>TRB — 암호화폐 자동매매 봇</h4>
+        <p class="summary">2026.03 – 2026.04 · 바이낸스 실전매매 봇 + 백테스팅 엔진</p>
+        <ul class="points">
+          <li>라이브와 백테스트 로직을 동일하게 맞춘 <b>실전매매 + 백테스팅 이원 구조</b>.</li>
+          <li>KAMA·ADX·RSI 기반 <b>시장 레짐 판정</b>, 손절·익절·트레일링스톱 리스크 관리, 디스코드 실시간 알림.</li>
+        </ul>
+        <div class="stack-gap"></div>
+        <div class="stack"><span>Python</span><span>Binance API</span><span>Discord Webhook</span></div>
       </article>
 
     </div>
   </section>
 
   <section>
-    <h2>기술</h2>
+    <div class="sec-title"><h2>기술</h2></div>
     <dl class="skills">
-      <div><dt>Backend</dt><dd><b>Spring Boot</b> · <b>NestJS</b> · Java 21 · JPA · TypeScript · Prisma · MariaDB / MySQL · MSSQL · PHP(레거시) · Python</dd></div>
-      <div><dt>Frontend</dt><dd><b>React 19</b> · <b>Next.js</b> · Vite · Tailwind CSS · Zustand · TanStack Query · fabric.js · model-viewer</dd></div>
-      <div><dt>결제 · 연동</dt><dd><b>토스페이먼츠</b> · <b>KG이니시스</b> · 사방넷 OMS · 아임웹 · KMC 본인인증 · Vimeo OTT</dd></div>
-      <div><dt>Infra · Test</dt><dd>AWS S3 · CDN · GitHub Actions · Docker · Playwright</dd></div>
+      <div><dt>Backend</dt><dd><span class="key">Spring Boot</span><span class="key">NestJS</span><span>Java 21</span><span>JPA</span><span>TypeScript</span><span>Prisma</span><span>MariaDB / MySQL</span><span>MSSQL</span><span>PHP (레거시)</span><span>Python</span></dd></div>
+      <div><dt>Frontend</dt><dd><span class="key">React 19</span><span class="key">Next.js</span><span>Vite</span><span>Tailwind CSS</span><span>Zustand</span><span>TanStack Query</span><span>fabric.js</span><span>model-viewer</span></dd></div>
+      <div><dt>결제 · 연동</dt><dd><span class="key">토스페이먼츠</span><span class="key">KG이니시스</span><span>사방넷 OMS</span><span>아임웹</span><span>KMC 본인인증</span><span>Vimeo OTT</span></dd></div>
+      <div><dt>Infra · Test</dt><dd><span>AWS S3 · CDN</span><span>GitHub Actions</span><span>Docker</span><span>Playwright</span></dd></div>
     </dl>
   </section>
 
-  <footer>
-    GitHub 커밋 이력을 기반으로 정리했습니다. 수치는 본인 작성 커밋(머지 제외)과 코드 변경량 기준입니다.
-  </footer>
-</div>
+</main>
+
+<footer>
+  <div class="wrap">GitHub 커밋 이력을 기반으로 정리했습니다. 수치는 본인 작성 커밋(머지 제외)과 코드 변경량 기준입니다.</div>
+</footer>
 
 <script>
   function toggleTheme() {
