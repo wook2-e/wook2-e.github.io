@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>정연욱 · 백엔드 중심 풀스택 개발자</title>
-<meta name="description" content="정연욱 포트폴리오 — 결제·구독·정산 커머스 백엔드 중심 풀스택 개발자. 바른생각·언베일 독립몰, LearnRun, Weclo, 아즈라, SISA(PG 마이그레이션), DoorKitchen, 자동매매 봇.">
+<meta name="description" content="정연욱 포트폴리오 — 결제·구독·정산 커머스 백엔드 중심 풀스택 개발자. 바른생각·언베일 독립몰, LearnRun, Weclo, 아즈라, SISA(PG 전환 안정화), DoorKitchen, 자동매매 봇.">
 <meta property="og:title" content="정연욱 · 백엔드 중심 풀스택 개발자">
 <meta property="og:description" content="결제·구독·정산 커머스 백엔드 중심 풀스택 개발자 포트폴리오">
 <meta property="og:type" content="website">
@@ -234,7 +234,7 @@
 
   <div class="stats reveal" style="animation-delay:.08s">
     <div class="stat"><div class="n">8</div><div class="l">주력 프로젝트</div></div>
-    <div class="stat"><div class="n">1,600<small>+</small></div><div class="l">커밋 (2025.11~)</div></div>
+    <div class="stat"><div class="n">1,900<small>+</small></div><div class="l">커밋 (2025.11~)</div></div>
     <div class="stat"><div class="n">35</div><div class="l">DB 모델 설계</div></div>
     <div class="stat"><div class="n">4</div><div class="l">결제·구독 도메인</div></div>
   </div>
@@ -319,7 +319,7 @@
     <article class="project">
       <div class="top">
         <div class="p-name"><h3>LearnRun</h3><span class="tag">풀스택 · 단독</span></div>
-        <span class="meta">2026.01 – 2026.06</span>
+        <span class="meta">2026.01 – 2026.08</span>
       </div>
       <p class="sub">구독형 온라인 강의(LMS) SaaS 플랫폼 — 백엔드·프론트 전 영역 단독 개발</p>
       <div class="stack">
@@ -335,9 +335,9 @@
       </ul>
       <div class="metrics">
         <span class="metric">단독 개발</span>
-        <span class="metric">백엔드 <b>271</b> 커밋</span>
-        <span class="metric">프론트 <b>479</b> 커밋</span>
-        <span class="metric">코드 <b>+13.9k / −8.5k</b></span>
+        <span class="metric">백엔드 <b>259</b> 커밋</span>
+        <span class="metric">프론트 <b>443</b> 커밋</span>
+        <span class="metric">코드 <b>+49.7k / −15.6k</b></span>
         <span class="metric">DB 모델 <b>35</b></span>
       </div>
     </article>
@@ -345,7 +345,7 @@
     <article class="project">
       <div class="top">
         <div class="p-name"><h3>Weclo</h3><span class="tag">풀스택 · 팀</span></div>
-        <span class="meta">2026.04 – 2026.07</span>
+        <span class="meta">2026.04 – 2026.08</span>
       </div>
       <p class="sub">커스텀 인쇄·굿즈 커머스 — 브라우저 내 3D 스튜디오 &amp; 디자인 에디터 위젯</p>
       <div class="stack">
@@ -359,9 +359,10 @@
         <li>Playwright 기반 E2E 테스트로 결제·카트 시나리오 검증</li>
       </ul>
       <div class="metrics">
-        <span class="metric">위젯 <b>217</b> 커밋</span>
-        <span class="metric">백엔드 <b>124</b> 커밋</span>
-        <span class="metric">프론트 <b>102</b> 커밋</span>
+        <span class="metric">위젯 <b>331</b> 커밋</span>
+        <span class="metric">백엔드 <b>235</b> 커밋</span>
+        <span class="metric">프론트 <b>160</b> 커밋</span>
+        <span class="metric">코드 <b>+63.9k</b></span>
       </div>
     </article>
 
@@ -387,30 +388,29 @@
 
     <article class="project">
       <div class="top">
-        <div class="p-name"><h3>결제 PG 마이그레이션</h3><span class="tag">백엔드 · 단독</span></div>
-        <span class="meta">2025.11 – 2026.04</span>
+        <div class="p-name"><h3>SISA 결제 PG 전환 안정화</h3><span class="tag">백엔드 · 팀</span></div>
+        <span class="meta">2026.01 – 2026.04</span>
       </div>
-      <p class="sub">레거시 PHP 교육·강의 서비스 다건의 결제 PG 전면 교체 — 이니시스 → 토스페이먼츠 (SISA · ntcore 등)</p>
+      <p class="sub">레거시 PHP 교육 서비스의 이니시스 → 토스페이먼츠 전환 이후 결제·주문 연동 안정화</p>
       <div class="stack">
-        <span>PHP</span><span>Smarty (.tpl)</span><span>ADODB / FreeTDS</span><span>MSSQL · SP</span><span>토스페이먼츠</span><span>알림톡</span>
+        <span>PHP</span><span>MSSQL</span><span>토스페이먼츠</span><span>알림톡</span>
       </div>
       <ul class="bullets">
-        <li><b>이니시스(INIpay) → 토스페이먼츠 결제모듈 전면 마이그레이션</b> — 여러 레거시 PHP 교육 사이트 대상, 중국·일본 웹·모바일 채널 + 라이브 키 적용</li>
-        <li><b>단건결제 + 정기결제(빌링)·구독 라이프사이클</b>로 전환 — autoBilling 등 구독 결제 파이프라인 재구축</li>
-        <li><b>레거시 스택 대응</b> — ADODB/FreeTDS로 MSSQL 저장 프로시저 연동, 연속 SP 호출 버그 등 안정화</li>
-        <li><b>결제 정합성 확보</b> — wOrder INSERT→UPDATE, 포인트 merchantData 동적 갱신, OKIND 영수증 URL 분기, 카드사 코드 정규화</li>
+        <li><b>카드사 코드 정규화</b> — 토스 카드사 코드 → 기존 이니시스 코드 변환, 인터넷전문은행 등 매핑 추가, zero-padding 적용</li>
+        <li><b>주문 연동 오류 수정</b> — 결제 단계 wOrder 조회를 OLD_OID 기준으로 바꿔 알림톡 발송·인강 권한·수강내역 누락 해결, MOID 누락 방지</li>
+        <li>토스페이 결제수단 처리, 단계별·패키지 상품 결제 구분 및 결제수단 표시 수정, 결제 세션 복구</li>
+        <li>EJU 모의고사 결제를 토스로 연동하고 403 오류 해결</li>
       </ul>
       <div class="metrics">
-        <span class="metric"><b>단독 완성·운영</b></span>
-        <span class="metric">다건 사이트 전환</span>
-        <span class="metric">단건 + 정기결제(빌링)</span>
+        <span class="metric">개인 <b>11</b> 커밋</span>
+        <span class="metric">운영 중 결제 이슈 대응</span>
       </div>
     </article>
 
     <article class="project">
       <div class="top">
         <div class="p-name"><h3>DoorKitchen</h3><span class="tag">백엔드 · 팀</span></div>
-        <span class="meta">2025.11 – 2025.12</span>
+        <span class="meta">2025.11 – 2026.01</span>
       </div>
       <p class="sub">구독형 밀키트·식품 정기배송 관리 시스템 — 운영 자동화 백오피스</p>
       <div class="stack">
@@ -423,7 +423,7 @@
         <li>비정상 데이터(total=0 &amp; completed&gt;0) 예외 만료 처리 등 운영 안정화</li>
       </ul>
       <div class="metrics">
-        <span class="metric">개인 <b>39</b> 커밋</span>
+        <span class="metric">개인 <b>60</b> 커밋</span>
         <span class="metric">구독·배송 도메인</span>
       </div>
     </article>
