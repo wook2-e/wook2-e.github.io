@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>정연욱 · 백엔드 중심 풀스택 개발자</title>
-<meta name="description" content="정연욱 포트폴리오 — 결제·구독·정산 커머스 백엔드 중심 풀스택 개발자. 바른생각·언베일 자사몰, LearnRun, Weclo, 아즈라, SISA(PG 마이그레이션), DoorKitchen, 자동매매 봇.">
+<meta name="description" content="정연욱 포트폴리오 — 결제·구독·정산 커머스 백엔드 중심 풀스택 개발자. 바른생각·언베일 독립몰, LearnRun, Weclo, 아즈라, SISA(PG 마이그레이션), DoorKitchen, 자동매매 봇.">
 <meta property="og:title" content="정연욱 · 백엔드 중심 풀스택 개발자">
 <meta property="og:description" content="결제·구독·정산 커머스 백엔드 중심 풀스택 개발자 포트폴리오">
 <meta property="og:type" content="website">
@@ -273,10 +273,10 @@
 
     <article class="project">
       <div class="top">
-        <div class="p-name"><h3>바른생각 자사몰</h3><span class="tag">풀스택 · 팀</span></div>
+        <div class="p-name"><h3>바른생각 독립몰</h3><span class="tag">풀스택 · 팀</span></div>
         <span class="meta">2026.08 – 진행 중</span>
       </div>
-      <p class="sub">컨비니언스 커머스 자사몰 + 운영 백오피스 — 고객 API · 백오피스 API · 백오피스 프론트 · 고객 프론트</p>
+      <p class="sub">자체 개발 쇼핑몰(독립몰) + 운영 백오피스 — 고객 API · 백오피스 API · 백오피스 프론트 · 고객 프론트</p>
       <div class="stack">
         <span>Spring Boot 3.5</span><span>Java 21</span><span>JPA</span><span>MariaDB</span>
         <span>Next.js 16</span><span>React 19</span><span>Tailwind 4</span><span>사방넷 OMS</span>
@@ -284,14 +284,14 @@
       <ul class="bullets">
         <li><b>백오피스 API 골격부터 구축</b> — Spring Boot 3.5 + Java 21, 운영자 인증, 상품·카테고리·프로모션·배송 정책 등 관리 API 전반</li>
         <li><b>주문 클레임 파이프라인</b> — 취소·교환·반품을 요청 → 승인 → 환불 실행으로 연결, 교환 승인 시 재고 이중 차감·전액 환불 후 결제상태 잔존 버그 해결</li>
-        <li><b>정산 원장 설계</b> — 결제 승인 시점 원장 적재, 주문 할인을 항목별로 분해해 쿠폰·적립금·무료배송 몫을 정산 라인에 분리</li>
-        <li><b>사방넷 OMS 어댑터</b> — 인증·주문/클레임 조회·운송장 전송, 결제 시 출고 행 생성 → 배송완료 → 자동 구매확정 흐름 완성</li>
-        <li>구매 제한 6축(단독구매·임직원·가입기간 등), 프로모션 섹션 빌더, 통계·정산 대시보드를 목 데이터에서 실집계로 전환</li>
+        <li><b>정산 원장 구현</b> — 결제 승인 시점 원장 적재, 주문 할인을 항목별로 분해해 쿠폰·적립금·무료배송 몫을 정산 라인에 분리</li>
+        <li><b>사방넷 OMS 어댑터</b> — 인증·주문/클레임 조회·운송장 전송, 결제 → 출고 → 배송완료 → 자동 구매확정으로 끊겨 있던 흐름 복구</li>
+        <li><b>구매 제한 판정</b> — 백오피스가 저장만 하던 6축(수량·등급별·구매이력·ID당 횟수·가입기간·단독구매)을 주문·장바구니에 같은 로직으로 적용</li>
+        <li>프로모션 섹션 빌더, 통계·정산 대시보드를 목 데이터에서 실집계로 전환</li>
       </ul>
       <div class="metrics">
-        <span class="metric">개인 <b>331</b> 커밋 (4개 저장소)</span>
-        <span class="metric">백오피스 API <b>94</b> · 백오피스 프론트 <b>130</b></span>
-        <span class="metric">스키마 <b>106</b> 테이블</span>
+        <span class="metric">개인 <b>318</b> 커밋 (4개 저장소)</span>
+        <span class="metric">백오피스 API <b>91</b> · 백오피스 프론트 <b>126</b></span>
       </div>
     </article>
 
@@ -380,7 +380,7 @@
         <li><b>아임웹 OMS 인증 연동</b> — 토큰 유효성 검증 경로 실측, 사내 프록시 경유 회원 정보 조회</li>
       </ul>
       <div class="metrics">
-        <span class="metric">개인 <b>17</b> 커밋</span>
+        <span class="metric">개인 <b>11</b> 커밋</span>
         <span class="metric">코드 <b>+7.2k</b></span>
       </div>
     </article>
