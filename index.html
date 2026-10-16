@@ -146,7 +146,22 @@
   .card .count { font-size: 12.5px; color: var(--muted); margin-left: auto; }
   .card .count b { color: var(--accent-ink); }
 
+  /* ---------- Achievements ---------- */
+  .wins { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .win { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px 22px 20px; }
+  .win .n { font-size: 32px; font-weight: 800; color: var(--accent); letter-spacing: -0.04em; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  .win .t { font-size: 15px; font-weight: 700; color: var(--ink); margin-top: 10px; letter-spacing: -0.02em; }
+  .win .d { font-size: 13px; color: var(--muted); margin-top: 4px; line-height: 1.55; }
+
   /* ---------- Troubleshooting ---------- */
+  .case .freq { font-size: 12px; font-weight: 700; color: #b4501f; background: #fdeee4; padding: 3px 10px; border-radius: 999px; }
+  :root[data-theme="dark"] .case .freq { color: #ffb38a; background: #3a2216; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .case .freq { color: #ffb38a; background: #3a2216; } }
+  .more-cases { margin-top: 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 4px 28px; }
+  .more-cases summary { cursor: pointer; padding: 18px 0; font-weight: 700; color: var(--ink); font-size: 15px; }
+  .more-cases ul { margin: 0 0 20px; padding: 0; list-style: none; display: grid; gap: 14px; font-size: 14.5px; }
+  .more-cases li b { display: block; margin-bottom: 2px; }
+  .more-cases li .proj { font-size: 12px; font-weight: 600; color: var(--muted); margin-left: 6px; }
   .cases { display: grid; gap: 16px; }
   .case { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 26px 28px; }
   .case .f-head { gap: 8px 10px; }
@@ -183,6 +198,9 @@
     .date { margin-left: 0; width: 100%; }
     .kpis { grid-template-columns: 1fr 1fr; }
     .grid { grid-template-columns: 1fr; }
+    .wins { grid-template-columns: 1fr 1fr; }
+    .win .n { font-size: 26px; }
+    .more-cases { padding: 2px 20px; }
     .case { padding: 22px 20px; }
     .case dl div { grid-template-columns: 1fr; gap: 2px; }
     .skills { padding: 6px 20px; }
@@ -232,6 +250,18 @@
 <main class="wrap">
 
   <section>
+    <div class="sec-title"><h2>성과</h2><span>커밋 이력으로 확인한 수치</span></div>
+    <div class="wins">
+      <div class="win"><div class="n">20s → 5s</div><div class="t">다중 사이즈 담기 4배 단축</div><div class="d">Weclo · iframe 순차 처리를 최대 4개 병렬로</div></div>
+      <div class="win"><div class="n">781 : 3</div><div class="t">끊긴 구매확정 흐름 복구</div><div class="d">바른생각 · 배송완료 781건 대비 구매확정 3건이던 상태 전파 결함 해결</div></div>
+      <div class="win"><div class="n">17개</div><div class="t">백오피스 영역 목업 → 실 API</div><div class="d">바른생각 · 주문·상품·프로모션·정산·통계 등</div></div>
+      <div class="win"><div class="n">~90 · 51</div><div class="t">REST 엔드포인트 · 컨트롤러</div><div class="d">바른생각 백오피스 API 엔드포인트 약 90개, Weclo 백엔드 컨트롤러 51개 신규 작성</div></div>
+      <div class="win"><div class="n">6종</div><div class="t">운영 자동화 스케줄러</div><div class="d">LearnRun · 토큰 갱신·회원 동기화·영상 메타·만료 처리·구독 갱신 등</div></div>
+      <div class="win"><div class="n">43개</div><div class="t">테스트 파일 직접 추가</div><div class="d">바른생각 24 · Weclo 19 (JUnit)</div></div>
+    </div>
+  </section>
+
+  <section>
     <div class="sec-title"><h2>주요 프로젝트</h2><span>3</span></div>
 
     <article class="feature">
@@ -279,90 +309,103 @@
       <p class="summary">커스텀 인쇄·굿즈 커머스. 브라우저 안에서 도는 3D 스튜디오와 디자인 에디터 위젯.</p>
       <div class="kpis">
         <div class="kpi"><div class="n">726</div><div class="l">커밋 (위젯 331 · 백엔드 235 · 프론트 160)</div></div>
-        <div class="kpi"><div class="n">+63.9k</div><div class="l">코드 추가</div></div>
-        <div class="kpi"><div class="n">3D + 2D</div><div class="l">프리뷰 · 캔버스 에디터</div></div>
+        <div class="kpi"><div class="n">51</div><div class="l">백엔드 컨트롤러 신규 작성 (전체 60)</div></div>
+        <div class="kpi"><div class="n">20s → 5s</div><div class="l">다중 사이즈 담기 병렬화</div></div>
       </div>
       <ul class="points">
         <li><b>3D 제품 프리뷰 + 2D 캔버스 디자인 에디터</b> 위젯 개발 (model-viewer + fabric.js, 상태관리 Zustand).</li>
-        <li><b>커머스 카트·결제 연동</b> — DOM 조작 방식을 서버 카트 API로 전환, 디자인 ID별로 카트 줄 분리.</li>
-        <li><b>인쇄면별 상대가격 계산·옵션 조합 동기화</b> — 이중청구 회피 등 가격 정합성 처리.</li>
-        <li>Playwright E2E 테스트로 결제·카트 시나리오 검증.</li>
+        <li><b>아임웹 카트·결제 브리지</b> — 네이티브 카트 비우기를 DOM 클릭에서 서버 카트 API로 전환, 디자인 ID별 카트 줄 분리, 결제 금액 2배 버그 해결.</li>
+        <li><b>가격 정합성</b> — 인쇄면·사이즈·긴급제작 추가금을 에디터·장바구니·재주문·개인결제에 같은 단가 규칙으로 통일, 아임웹 추가상품 가격 동기화.</li>
+        <li><b>Spring Boot 백엔드</b> — 컨트롤러 51개 신규 작성, JUnit 테스트 19개 파일 추가. 웹훅이 오지 않는 무통장 주문을 위한 pull 동기화(주기 2분 → 30초).</li>
+        <li>다중 사이즈 담기를 iframe 순차 → 최대 4개 병렬로 바꿔 <b>약 20초 → 5초</b>, 이후 직접 POST + iframe 폴백으로 개선.</li>
       </ul>
-      <div class="stack"><span>React 19</span><span>Zustand</span><span>model-viewer</span><span>fabric.js</span><span>pdf.js</span><span>Playwright</span><span>NestJS</span></div>
+      <div class="stack"><span>React 19</span><span>Zustand</span><span>model-viewer</span><span>fabric.js</span><span>pdf.js</span><span>Spring Boot</span><span>JUnit</span></div>
     </article>
   </section>
 
   <section>
-    <div class="sec-title"><h2>트러블슈팅</h2><span>6</span></div>
+    <div class="sec-title"><h2>트러블슈팅</h2><span>자주 부딪힌 문제부터</span></div>
     <div class="cases">
 
       <article class="case">
-        <div class="f-head"><span class="role">JPA · 영속성 컨텍스트</span><span class="proj">바른생각 독립몰</span></div>
-        <h4>전액 환불했는데 주문 결제상태가 PAID로 남고, 출고에 품목이 배정되지 않음</h4>
+        <div class="f-head"><span class="freq">커밋 80여 개 · 가장 오래 씨름</span><span class="role">외부 플랫폼 연동</span><span class="proj">Weclo</span></div>
+        <h4>아임웹 결제창에서 수량·금액이 정확히 2배 (194,000원 → 388,000원)</h4>
+        <dl>
+          <div><dt>현상</dt><dd>자체 위젯 카트를 아임웹 네이티브 카트로 넘기는 브리지에서 결제 금액 2배, 결제창 무한 로딩, 위젯에 없는 상품이 함께 뜨는 문제가 번갈아 발생.</dd></div>
+          <div><dt>원인</dt><dd>① 네이티브 카트가 비어 있을 때 비우기 콜백 <code>done()</code>이 두 번 불려 재담기 체인이 두 번 돌고, 아임웹이 같은 줄을 합치며 수량 누적. ② 비우기를 DOM 클릭에 의존해 카트 UI가 없는 페이지에서 실패. ③ 재귀 대기마다 시작 시각을 새로 잡아 대기가 끝나지 않음.</dd></div>
+          <div><dt class="fix">해결</dt><dd>콜백 1회 보장 가드, 카트 비우기를 서버 카트 API로 전환, 장바구니 정리를 결제 직후가 아닌 주문 확인 시점에 백엔드가 수행. 로그를 잘못 읽고 쌓은 커밋 6개는 정상 시점으로 되돌린 뒤 핵심 수정만 다시 적용.</dd></div>
+        </dl>
+        <p class="result">잘못된 가정 위에 쌓은 수정을 원복으로 정리하고, 원인을 커밋에 기록해 회귀를 막음</p>
+      </article>
+
+      <article class="case">
+        <div class="f-head"><span class="freq">fix 25건 · 3개 저장소</span><span class="role">가격 정합성</span><span class="proj">Weclo</span></div>
+        <h4>같은 주문인데 에디터 103,000원, 장바구니 97,000원</h4>
+        <dl>
+          <div><dt>현상</dt><dd>인쇄면·사이즈·긴급제작 추가금이 에디터, 장바구니, 재주문, 개인결제, 결제창마다 다르게 계산됨.</dd></div>
+          <div><dt>원인</dt><dd>화면마다 단가 계산을 따로 들고 있어 일부는 기본가 × 수량만 계산. 백오피스에서 추가금을 바꿔도 이미 매핑된 면은 <code>containsKey → continue</code>로 건너뛰어 아임웹 추가상품 가격이 옛 값으로 청구. 「라이트 블루」/「라이트블루」 표기 차이로 옵션 매칭이 조용히 실패.</dd></div>
+          <div><dt class="fix">해결</dt><dd>기본가 + 인쇄면·사이즈·긴급비의 단일 단가 규칙을 모든 경로에 적용, 추가상품 판매가를 PATCH로 동기화하고 0원 매핑 정리, 옵션값은 공백·대소문자 무시 매칭.</dd></div>
+        </dl>
+        <p class="result">화면·결제창·백오피스 금액 일치, 이중청구·과소청구 경로 제거</p>
+      </article>
+
+      <article class="case">
+        <div class="f-head"><span class="freq">fix 11건 → cron 하나로</span><span class="role">비동기 외부 API</span><span class="proj">LearnRun</span></div>
+        <h4>강의 썸네일이 회색, 재생시간이 0초</h4>
+        <dl>
+          <div><dt>현상</dt><dd>Vimeo에 올린 강의 영상의 썸네일·재생시간이 비어 있는 문제가 두 달 가까이 반복.</dd></div>
+          <div><dt>원인</dt><dd>Vimeo 인코딩은 비동기로 끝나는데 업로드 직후 메타데이터를 한 번만 저장하는 구조. 인코딩 전에는 <code>default-</code> 플레이스홀더 썸네일이 오고, 응답 필드(<code>.url</code>/<code>.link</code>) 참조 오류도 겹침.</dd></div>
+          <div><dt class="fix">해결</dt><dd>조회 시점 fallback을 덧대던 방식을 버리고, 5분 주기 cron이 미완료 영상의 상태·재생시간·썸네일·embed 해시를 한 번에 갱신하도록 재설계.</dd></div>
+        </dl>
+        <p class="result">땜질 패치 11건을 근본 해결로 대체, 기존에 멈춰 있던 영상도 별도 backfill 없이 자동 복구</p>
+      </article>
+
+      <article class="case">
+        <div class="f-head"><span class="freq">6커밋 · 서버 2개</span><span class="role">상태 전파</span><span class="proj">바른생각 독립몰</span></div>
+        <h4>배송완료 781건 중 자동 구매확정 3건</h4>
+        <dl>
+          <div><dt>현상</dt><dd>배송조회에서 배송완료로 바뀌어도 주문은 「상품준비중」, 자동 구매확정 대상은 늘 0건이라 구매확정 적립금도 나가지 않음. 에러가 없어 아무도 몰랐음.</dd></div>
+          <div><dt>원인</dt><dd><code>orders.delivered_at</code>과 배송 상태를 쓰는 코드가 아예 없었고, 한진 배치는 출고 정보만 기록. 이후 추가된 택배사 폴링·운영자 수동 처리 경로는 품목 상태를 빠뜨림.</dd></div>
+          <div><dt class="fix">해결</dt><dd>출고 데이터로 주문·품목 상태를 다시 계산하는 단일 규칙을 만들어 고객 서버 배치와 백오피스 서버에 똑같이 적용. 결제 전·확정 후·클레임·보류 상태는 건드리지 않음.</dd></div>
+        </dl>
+        <p class="result">결제 → 출고 → 배송완료 → 자동 구매확정까지 끊겨 있던 흐름 복구</p>
+      </article>
+
+      <article class="case">
+        <div class="f-head"><span class="freq">같은 함정 2곳</span><span class="role">JPA · 영속성 컨텍스트</span><span class="proj">바른생각 독립몰</span></div>
+        <h4>전액 환불했는데 결제상태가 PAID, 출고에는 품목이 0건</h4>
         <dl>
           <div><dt>현상</dt><dd>에러 없이 화면은 「취소」로 보이는데 <code>orders.payment_status</code>만 PAID로 남음. 출고 행은 생기는데 품목 배정은 0건.</dd></div>
-          <div><dt>원인</dt><dd>재고 증감 쿼리가 <code>@Modifying(clearAutomatically = true)</code>라 영속성 컨텍스트를 통째로 비움. 그 뒤에 고친 엔티티는 준영속이라 값만 바뀌고 UPDATE가 나가지 않음. SQL 로그로 같은 트랜잭션에서 <code>update orders</code>만 빠진 것을 확인.</dd></div>
-          <div><dt class="fix">해결</dt><dd>엔티티 변경을 재고 쿼리보다 앞으로 옮기고, 그 자리에 「이 아래로 엔티티를 고치는 코드를 넣지 않는다」는 경계를 명시.</dd></div>
+          <div><dt>원인</dt><dd>재고 증감 쿼리가 <code>@Modifying(clearAutomatically = true)</code>라 영속성 컨텍스트를 통째로 비움. 그 뒤에 고친 엔티티는 준영속이라 UPDATE가 나가지 않음. SQL 로그로 <code>update orders</code>만 빠진 것을 확인.</dd></div>
+          <div><dt class="fix">해결</dt><dd>엔티티 변경을 재고 쿼리보다 앞으로 옮기고, 「이 아래로 엔티티를 고치는 코드를 넣지 않는다」는 경계를 코드에 명시.</dd></div>
         </dl>
-        <p class="result">목 기반 단위 테스트로는 잡히지 않는 결함 — 같은 함정을 두 곳에서 찾아 함께 수정</p>
+        <p class="result">목 기반 단위 테스트로는 잡히지 않는 결함을 실측으로 찾아 두 곳 함께 수정</p>
       </article>
 
       <article class="case">
-        <div class="f-head"><span class="role">Hibernate · 정합성</span><span class="proj">바른생각 독립몰</span></div>
-        <h4>교환 승인 후 재고는 바뀐 품목에서 빠지는데 주문 항목은 옛 품목 그대로</h4>
-        <dl>
-          <div><dt>현상</dt><dd>승인 200, 클레임 COMPLETED, 교환 품목 재고도 차감됐지만 <code>order_item</code>은 빨강 → 파랑으로 바뀌지 않음. 게다가 재고는 승인 한 번에 2개 빠짐.</dd></div>
-          <div><dt>원인</dt><dd>① <code>OrderItem</code>에 붙은 <code>@Immutable</code>이 변경을 조용히 버림. ② 교환 집행을 고객 서버로 옮기면서 백오피스의 옛 집행 코드를 지우지 않아 두 서버가 같은 재고를 각자 차감.</dd></div>
-          <div><dt class="fix">해결</dt><dd>변경 대상 엔티티에서 <code>@Immutable</code> 제거, 나머지 <code>@Immutable</code> 엔티티 전수 점검. 집행 소유권을 고객 서버 한쪽으로 일원화.</dd></div>
-        </dl>
-        <p class="result">로컬에서 백오피스를 고객 서버에 붙여 재현 → 재고 −2 → −1, 주문 항목 정상 교체 확인</p>
-      </article>
-
-      <article class="case">
-        <div class="f-head"><span class="role">인증 · 경합</span><span class="proj">언베일 독립몰</span></div>
+        <div class="f-head"><span class="freq">경합 · 재현 불규칙</span><span class="role">인증</span><span class="proj">언베일 독립몰</span></div>
         <h4>회원 결제가 가끔 비회원으로 승인되어 ORDER_NOT_FOUND</h4>
         <dl>
-          <div><dt>현상</dt><dd>PG 결제창에서 돌아온 직후 승인 요청이 실패해 「결제가 승인되지 않았습니다」. 재현이 들쭉날쭉.</dd></div>
-          <div><dt>원인</dt><dd>① 새 문서라 액세스 토큰이 비어 있고, 세션 복구가 끝나기 전에 승인이 Authorization 없이 나감. ② 탭이 여러 개면 리프레시 토큰 회전으로 한쪽 복구가 <code>INVALID_REFRESH_TOKEN</code>으로 실패해 guest로 내려앉음. 서버 로그로 0.16초 차이를 확인.</dd></div>
-          <div><dt class="fix">해결</dt><dd>승인 전 인증 판정 완료를 기다리게 하고, 「비회원 주문 키가 없는데 guest」면 복구 실패한 회원으로 보고 한 번 더 토큰 재발급 후 세션 채택.</dd></div>
+          <div><dt>현상</dt><dd>PG 결제창에서 돌아온 직후 승인이 실패해 「결제가 승인되지 않았습니다」. 재현이 들쭉날쭉.</dd></div>
+          <div><dt>원인</dt><dd>① 새 문서라 액세스 토큰이 비어 있고, 세션 복구 전에 승인이 Authorization 없이 나감. ② 탭이 여러 개면 리프레시 토큰 회전으로 한쪽 복구가 <code>INVALID_REFRESH_TOKEN</code>으로 실패해 guest로 내려앉음. 서버 로그로 0.16초 차이 확인.</dd></div>
+          <div><dt class="fix">해결</dt><dd>승인 전 인증 판정 완료를 기다리고, 「비회원 주문 키가 없는데 guest」면 복구 실패한 회원으로 보고 토큰 재발급 후 세션 채택.</dd></div>
         </dl>
         <p class="result">되돌릴 수 없는 결제 경로부터 막고, 근본 원인(다중 탭 × 회전 토큰)은 별도 과제로 기록</p>
       </article>
 
-      <article class="case">
-        <div class="f-head"><span class="role">PG 연동</span><span class="proj">언베일 독립몰</span></div>
-        <h4>결제창·카드 인증까지 정상인데 마지막 승인만 R122로 거부</h4>
-        <dl>
-          <div><dt>현상</dt><dd>KG이니시스가 「Signature 값이 잘못되었습니다」(R122)로 승인 거부. 증상이 결제창 뒤에 나타나 원인이 다른 곳처럼 보임.</dd></div>
-          <div><dt>원인</dt><dd>결제창 서명은 쿼리스트링 규칙을 지켰지만 승인 서명만 <code>sha256(authToken + timestamp)</code>로 값을 이어붙이고 있었음. 규격은 <code>sha256("authToken=…&amp;timestamp=…")</code>.</dd></div>
-          <div><dt class="fix">해결</dt><dd>승인·검증 서명을 규격대로 수정. 같은 폼을 쓰는 망취소 서명도 함께 바로잡음.</dd></div>
-        </dl>
-        <p class="result">한 번도 성공한 적 없던 승인·망취소 경로를 함께 정상화</p>
-      </article>
-
-      <article class="case">
-        <div class="f-head"><span class="role">DB 복제 지연</span><span class="proj">언베일 독립몰</span></div>
-        <h4>DB 최종 상태는 멀쩡한데 주문서가 「주문할 상품이 없습니다」</h4>
-        <dl>
-          <div><dt>현상</dt><dd>[바로 구매]·결제 전 선택 정리 직후 주문서가 빈 장바구니로 뜸.</dd></div>
-          <div><dt>원인</dt><dd>주문서 조회는 읽기 복제본, 선택 변경은 라이터로 감. 「전체 해제 → 살 것만 선택」 중 전체 해제만 먼저 복제된 순간을 읽음.</dd></div>
-          <div><dt class="fix">해결</dt><dd>장바구니 결제는 「끄기만」 하도록 바꿔 복제가 늦어도 살 줄이 사라지지 않게 함. 전체 해제가 불가피한 바로 구매만 <code>CART_EMPTY</code>일 때 한 번 재조회.</dd></div>
-        </dl>
-        <p class="result">복제 지연을 없애려 하지 않고, 지연이 있어도 틀릴 수 없는 순서로 재설계</p>
-      </article>
-
-      <article class="case">
-        <div class="f-head"><span class="role">동시성</span><span class="proj">LearnRun</span></div>
-        <h4>외부 커머스 토큰 갱신이 겹쳐 연동이 끊기고 크론이 무한 재시도</h4>
-        <dl>
-          <div><dt>현상</dt><dd>크론 갱신과 API 호출 중 지연 갱신이 동시에 일어나면 토큰이 꼬여 연동이 끊기고, 이후 크론이 실패를 계속 반복.</dd></div>
-          <div><dt>원인</dt><dd>갱신 진입점이 둘이라 같은 리프레시 토큰을 두 번 사용. 무효 토큰(30170)을 받은 뒤에도 상태를 정리하지 않아 영원히 재시도.</dd></div>
-          <div><dt class="fix">해결</dt><dd>사이트 단위 mutex로 갱신을 한 번만 실행하고 나머지 호출은 같은 Promise를 공유. 진입점을 단일화하고, 무효 토큰이면 토큰을 비워 재시도를 멈춘 뒤 재연동 시 자동 복구.</dd></div>
-        </dl>
-        <p class="result">멀티테넌트 전 사이트에서 토큰 경합과 무한 stuck 해소</p>
-      </article>
-
     </div>
+
+    <details class="more-cases">
+      <summary>그 밖의 사례 6건 펼치기</summary>
+      <ul>
+        <li><b>교환 승인 후 재고는 2개 빠지고 주문 항목은 옛 품목 그대로<span class="proj">바른생각</span></b><code>@Immutable</code>이 변경을 조용히 버리고, 교환 집행이 두 서버에 남아 재고를 각자 차감. <code>@Immutable</code> 제거·전수 점검, 집행 소유권을 고객 서버로 일원화.</li>
+        <li><b>클레임 승인이 경로마다 다른 이유로 막힘 (6건)<span class="proj">바른생각 · 언베일</span></b>비회원 주문의 NULL 매칭 실패(비회원이 71%), 운영자 승인이 고객용 판정을 재사용, 하드코딩된 플래그로 고객·운영자 환불액 7,000원 차이. 판정 입력을 boolean 대신 <code>ClaimType</code>으로 강제.</li>
+        <li><b>장바구니에서 뺀 상품이 주문서에 다시 들어옴<span class="proj">바른생각 · 언베일</span></b>장바구니·주문서·주문 생성이 서로 다른 「선택됨」 기준을 사용. 한 함수에서 걸러 세 곳이 같은 판정을 쓰도록 통일.</li>
+        <li><b>DB는 멀쩡한데 주문서가 「주문할 상품이 없습니다」<span class="proj">언베일</span></b>읽기 복제본이 「전체 해제」만 먼저 반영한 순간을 읽음. 복제가 늦어도 틀릴 수 없는 순서로 재설계.</li>
+        <li><b>이니시스 승인만 R122로 거부<span class="proj">언베일</span></b>승인 서명이 값을 이어붙이는 방식이라 규격(쿼리스트링 해시)과 달랐음. 승인·검증·망취소 서명을 함께 수정.</li>
+        <li><b>외부 결제 웹훅이 400으로 버려져 자동 수강등록 실패<span class="proj">LearnRun</span></b>전역 DTO 검증(<code>forbidNonWhitelisted</code>)이 추가 필드를 거부, payload 형식도 세 가지. raw body 수신 + 형식 자동 감지, 쇼핑몰·구독 결제 책임 분리. 토큰 갱신 경합은 사이트 단위 mutex로 해결.</li>
+      </ul>
+    </details>
   </section>
 
   <section>
@@ -439,7 +482,7 @@
       <div><dt>Backend</dt><dd><span class="key">Spring Boot</span><span class="key">NestJS</span><span>Java 21</span><span>JPA</span><span>TypeScript</span><span>Prisma</span><span>MariaDB / MySQL</span><span>MSSQL</span><span>PHP (레거시)</span><span>Python</span></dd></div>
       <div><dt>Frontend</dt><dd><span class="key">React 19</span><span class="key">Next.js</span><span>Vite</span><span>Tailwind CSS</span><span>Zustand</span><span>TanStack Query</span><span>fabric.js</span><span>model-viewer</span></dd></div>
       <div><dt>결제 · 연동</dt><dd><span class="key">토스페이먼츠</span><span class="key">KG이니시스</span><span>사방넷 OMS</span><span>아임웹</span><span>KMC 본인인증</span><span>Vimeo OTT</span></dd></div>
-      <div><dt>Infra · Test</dt><dd><span>AWS S3 · CDN</span><span>GitHub Actions</span><span>Docker</span><span>Playwright</span></dd></div>
+      <div><dt>Infra · Test</dt><dd><span>AWS S3 · CDN</span><span>GitHub Actions</span><span>Docker</span><span>JUnit</span></dd></div>
     </dl>
   </section>
 
